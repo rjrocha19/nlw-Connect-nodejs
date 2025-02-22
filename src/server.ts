@@ -10,6 +10,7 @@ import {
 } from 'fastify-type-provider-zod'
 import { z } from 'zod'
 import { env } from './env'
+import { acessInviteLinkRoute } from './routes/acess-invite-link'
 import { subscribeToEventRoute } from './routes/subscribe-to-event-route'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
@@ -34,6 +35,7 @@ app.register(fastifySwaggerUi, {
 })
 
 app.register(subscribeToEventRoute)
+app.register(acessInviteLinkRoute)
 
 app.listen({ port: env.PORT }).then(() => {
   console.log('Server listening on port', env.PORT)
